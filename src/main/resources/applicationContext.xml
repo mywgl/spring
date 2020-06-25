@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!-- 为Person的自定义类型属性赋值
+         property ：手动赋值
+         自动赋值（自动装配）
+         autowire = "default / no" 不自动装配
+         = "byName" 以属性名（car）作为id去容器中找到这个组件，给它赋值如果找不到就装配null
+         = "byType" 以类型去容器中找相应的属性赋值,如果容器中有多个这个类型的组件就报错
+         ="constructor" 以构造器进行赋值
+         自动装配仅限于自定义类型能够使用
+     -->
+    <bean id="car" class="com.bean.Car">
+        <property name="name" value="宝马"></property>
+        <property name="color" value="白色"></property>
+        <property name="price" value="300045"></property>
+    </bean>
+
+    <bean id="person" class="com.bean.Person" autowire="constructor">
+       <!-- <property name="carl" ref="car"></property> 手动赋值-->
+    </bean>
+</beans>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util https://www.springframework.org/schema/util/spring-util.xsd">
+    <!--class :写要注册的组件的全类名
+        id ：这个对象的唯一标识
+    -->
+    <!--调用无参构造器-->
+    <bean  id="person01" class="com.bean.Person">
+        <property name="lastName" value="张三"></property>
+        <property name="age" value="23"></property>
+        <property name="email" value="www.debug@qq.com"></property>
+    </bean>
+    <!--调用有参构造器进行创建对象 -->
+    <bean id="person02" class="com.bean.Person">
+        <constructor-arg name="lastName" value="小明"></constructor-arg>
+        <constructor-arg name="age" value="22"></constructor-arg>
+        <constructor-arg name="email" value="238503@qq.com"></constructor-arg>
+    </bean>
+
+    <bean id="Car01" class="com.bean.Car">
+        <property name="name" value="宝马"></property>
+        <property name="color" value="绿色"></property>
+        <property name="price" value="200000"></property>
+    </bean>
+
+    <bean id="person03" class="com.bean.Person">
+        <property name="lastName">
+            <!--进行空值赋值-->
+            <null></null>
+        </property>
+        <!--引入外面的值-->
+        <property name="carl" ref="Car01"></property>
+    </bean>
+</beans>
